@@ -15,7 +15,7 @@ class AvailabilitiesController < ApplicationController
 
   # GET /availabilities/new
   def new
-    @availability = Availability.new
+    @availability = current_user.availabilities.build
   end
 
   # GET /availabilities/1/edit
@@ -25,7 +25,7 @@ class AvailabilitiesController < ApplicationController
   # POST /availabilities
   # POST /availabilities.json
   def create
-    @availability = Availability.new(availability_params)
+    @availability = current_user.availabilities.build(availability_params)
 
     respond_to do |format|
       if @availability.save

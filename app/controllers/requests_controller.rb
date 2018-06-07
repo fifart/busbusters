@@ -15,7 +15,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
-    @request = Request.new
+    @request = current_user.requests.build
   end
 
   # GET /requests/1/edit
@@ -25,7 +25,7 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @request = Request.new(request_params)
+    @request = current_user.requests.build(request_params)
 
     respond_to do |format|
       if @request.save
