@@ -1,6 +1,8 @@
 class AvailabilitiesController < ApplicationController
   before_action :set_availability, only: [:show, :edit, :update, :destroy]
+  before_action :set_type
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :availability_owner, only: [:edit, :update, :destroy]
 
   # GET /availabilities
   # GET /availabilities.json
@@ -70,6 +72,18 @@ class AvailabilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def availability_params
-      params.require(:availability).permit(:title, :description)
+      params.require(:availability).permit(:title, :description, :type_id)
     end
+
+    def set_type
+      @types = Type.all 
+    end
+
+    def availability_owner
+      unless @availability.user_id == current_user.id
+       flash[:notice] = 'Access denied as you are not owner of this Job'
+       redirect_to root_path
+      end
+     end
+
 end

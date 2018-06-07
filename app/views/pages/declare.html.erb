@@ -1,5 +1,4 @@
 
-
 <table>
   <thead>
     <tr>
@@ -9,9 +8,9 @@
   </thead>
 
   <tbody>
-    <% @availabilities.each do |advert| %>
+    <% @availabilities.each do |d| %>
       <tr>
-        <td><%= link_to advert.title, advert %></td>
+        <td><%= d.title %></td>
       </tr>
     <% end %>
   </tbody>

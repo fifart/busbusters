@@ -1,10 +1,14 @@
 class PagesController < ApplicationController
     def home
-        @avail = Availability.all.order(created_at: :desc)
-        @req = Request.all.order(created_at: :desc)
-        @adverts = (@req + @avail)
-
+        @availabilities = Availability.all.order(created_at: :desc)
     end
 
+    def declare
+        @availabilities = Availability.all.order(created_at: :desc).where(type_id: 2)
+    end
 
+    def ask
+        @availabilities = Availability.all.order(created_at: :desc).where(type_id: 1)
+    end
+    
 end
