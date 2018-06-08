@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
+<div class="card" style="width: 60rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @availability.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Posted on: <%= @availability.created_at.strftime("%d %B %Y, %l:%M%P") %></h6>
+    <p class="card-text"><%= @availability.description %></p>
+    <small>By <%= @availability.user.name %></small>
+    <% if user_signed_in? %>
+      <% if @availability.user_id == current_user.id %>
+        <%= link_to 'Edit', edit_availability_path(@availability) %>
+      <% end %>
+    <% end %>
+    <%= link_to 'Back', root_path %>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @availability.title %>
-</p>
+ 
 
-<p>
-  <strong>Description:</strong>
-  <%= @availability.description %>
-</p>
-
-<%= link_to 'Edit', edit_availability_path(@availability) %> |
-<%= link_to 'Back', root_path %>

@@ -81,7 +81,7 @@ class AvailabilitiesController < ApplicationController
 
     def availability_owner
       unless @availability.user_id == current_user.id
-       flash[:notice] = 'Access denied as you are not owner of this Job'
+       flash[:notice] = 'Access denied as you are not owner of this Post'
        redirect_to root_path
       end
      end

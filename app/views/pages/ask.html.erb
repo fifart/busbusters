@@ -1,17 +1,11 @@
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @availabilities.each do |d| %>
-      <tr>
-        <td><%= d.title %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="list-group">
+  <% @availabilities.each do |d| %>
+    <li class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1"><%= link_to d.title, d %></h6>
+        <small>Posted on: <%= d.created_at.strftime("%d %B %Y, %l:%M%P") %></small>
+      </div>
+    </li>
+  <% end %>
+</div>

@@ -1,18 +1,14 @@
 
+<div class="list-group">
+  <% @availabilities.each do |d| %>
+    <li class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1"><%= link_to d.title, d %></h6>
+        <small>Posted on: <%= d.created_at.strftime("%d %B %Y, %l:%M%P") %></small>
+      </div>
+    </li>
+  <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @availabilities.each do |advert| %>
-      <tr>
-        <td><%= link_to advert.title, advert %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
